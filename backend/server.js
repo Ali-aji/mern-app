@@ -1,7 +1,11 @@
 const express = require('express')
 const dotenv  = require('dotenv').config()
+const colore = require('colors')
 const {errorHandler} = require('./middleware/errorMiddleware')
+const connectDB = require('./config/db')
 const port = process.env.port || 5000
+
+connectDB()
 
 const app = express()
 
