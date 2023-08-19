@@ -7,9 +7,9 @@ const User = require("../models/userModel");
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, confirmPassword } = req.body;
+  const { name, email, password, password2 } = req.body;
 
-  if (!name || !email || !password || !confirmPassword) {
+  if (!name || !email || !password || !password2) {
     res.status(400);
     throw new Error("Please add all fields");
   }
@@ -20,7 +20,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("Email already exists");
   }
 
-  if (!(password === confirmPassword)) {
+  if (!(password === password2)) {
     res.status(400);
     throw new Error("Password not matched");
   }
